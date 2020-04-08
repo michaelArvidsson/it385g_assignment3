@@ -3,13 +3,16 @@
     <meta charset="utf-8">
     <title>Big trucks</title>
 <style>
-    body {
-        font-family: sans-serif;
-        background-color:lightslategrey;
+    * {
+        font-family: Courier, monospace;
+        font-weight:bold;
+    }
+    body {     
+        background-color:#5c8261;
     }
     form {
         width:500px;
-        background-color: white;
+        background-color:coral;
         padding:50px;
         margin:auto;
         box-shadow: 2px 2px 4px 2px;
@@ -22,7 +25,7 @@
     }
     #head {
         background-color: black;
-        color:white;
+        color:coral;
         font-size: 200%;
         font-weight: 700;
         letter-spacing: 10px;
@@ -35,6 +38,7 @@
 
 <body>
 <pre>
+<h1 id='head'>Big Trucks information database</h1>    
 <form method='post' action='respond_it385g_assignment3.php'>                       
 <?php                                                                                                                                                 
  
@@ -42,7 +46,7 @@ $url="https://wwwlab.iit.his.se/gush/XMLAPI/vehiclesservice/manufacturer/";
 $jsontext = file_get_contents($url);
 $arr = json_decode($jsontext);
 echo "<div id='f_body'>";
-echo "<label>Select manufacturer </label><select name='country'>";
+echo "<label>Select Manufacturer </label><select name='country'>";
 foreach($arr as $manufacturer){
     echo "<option value='".$manufacturer[1]."' >".$manufacturer[0]."</option>";
 }
