@@ -74,6 +74,7 @@ if (isset($_POST['country'])) {
 } else {
   $country = "USA";
 }
+//print_r($_POST);
 // Get array from webservice
 $url = "https://wwwlab.iit.his.se/gush/XMLAPI/vehiclesservice/vehicles/?country=" . $country;
 $jsontext = file_get_contents($url);
@@ -82,14 +83,17 @@ $arr = json_decode($jsontext);
 echo "<h1 id='caption'>Big Trucks information database</h1>";
 // run table 
 echo "<tr><th id='head'>Manufacturer</th><th id='head'>Drive shafts</th><th id='head'>Horsepowers</th></tr>";
-foreach ($arr[0] as $trucks) {
-  echo "<tr>";
-  echo "<td id='sub'>" . $trucks[0] . "</td>";
-  echo "<td id='sub'>" . $trucks[1] . "</td>";
-  echo "<td id='sub'>" . $trucks[2] . "</td>";
-}
+foreach ($arr as $trucks) {
+    foreach ($trucks as $Manufacturer){
+      echo "<tr>";
+      echo "<td id='sub'>" . $Manufacturer[0] . "</td>";
+      echo "<td id='sub'>" . $Manufacturer[1] . "</td>";
+      echo "<td id='sub'>" . $Manufacturer[2] . "</td>";
+    }
+    echo "</tr>";
+  }   
 // Test POST
-//print_r($_POST);
+//print_r($trucks);
 ?>
 </table>
 </pre>
